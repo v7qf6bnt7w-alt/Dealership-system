@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard | AutoMax{% endblock %}
+
+{% block content %}
+  <section class="admin-shell">
+    <div class="container admin-layout">
+      <aside class="admin-sidebar">
+        <h3>Administration</h3>
+        <nav>
+          <a href="{{ url_for('admin_dashboard') }}" class="active">Dashboard</a>
+          <a href="{{ url_for('admin_vehicles') }}">Vehicles</a>
+          <a href="{{ url_for('admin_requests') }}">Requests</a>
+          <a href="{{ url_for('admin_logout') }}">Logout</a>
+        </nav>
+      </aside>
+
+      <div class="admin-main">
+        <div class="page-header">
+          <h1>Dashboard</h1>
+          <a href="{{ url_for('admin_new_vehicle') }}" class="btn btn-primary">New vehicle</a>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>Total vehicles</span>
+            <strong>{{ vehicles|length }}</strong>
+          </div>
+          <div class="stat-card">
+            <span>Available</span>
+            <strong>{{ vehicles|selectattr('stock', 'gt', 0)|list|length }}</strong>
+          </div>
+          <div class="stat-card">
+            <span>Unavailable</span>
+            <strong>{{ vehicles|selectattr('stock', 'eq', 0)|list|length }}</strong>
+          </div>
+          <div class="stat-card">
+            <span>New requests</span>
+            <strong>{{ requests|length }}</strong>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>Recent requests</h2>
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for req in requests %}
+                <tr>
+                  <td>#{{ req.id }}</td>
+                  <td>{{ req.first_name }} {{ req.last_name }}</td>
+                  <td>{{ req.request_type }}</td>
+                  <td><span class="status-pill">{{ req.status }}</span></td>
+                  <td>{{ req.created_at }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

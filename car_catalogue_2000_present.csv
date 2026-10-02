@@ -1,0 +1,128 @@
+Brand,Model,Version_Trim,Year,Body_Style,Engine,Horsepower_HP,Transmission,Drivetrain,Fuel_Type,Country
+Audi,R8,V10 Plus,2017,Coupe,5.2L V10,610,7-Speed DCT,AWD,Gasoline,Germany
+Audi,R8,V10 Performance,2021,Coupe,5.2L V10,602,7-Speed DCT,AWD,Gasoline,Germany
+Audi,RS5,Sportback,2021,Sedan,2.9L Twin-Turbo V6,444,8-Speed Automatic,AWD,Gasoline,Germany
+Audi,RS6,Avant,2020,Wagon,4.0L Twin-Turbo V8,591,8-Speed Automatic,AWD,Gasoline,Germany
+Audi,RS7,Sportback,2022,Liftback,4.0L Twin-Turbo V8,591,8-Speed Automatic,AWD,Gasoline,Germany
+Audi,RS3,Sedan,2022,Sedan,2.5L Turbo I5,401,7-Speed DCT,AWD,Gasoline,Germany
+Audi,S5,Coupe,2018,Coupe,3.0L Turbo V6,349,8-Speed Automatic,AWD,Gasoline,Germany
+Audi,TT RS,Coupe,2018,Coupe,2.5L Turbo I5,394,7-Speed DCT,AWD,Gasoline,Germany
+Audi,e-tron GT,RS,2022,Sedan,Dual Electric Motors,637,2-Speed Automatic,AWD,Electric,Germany
+Audi,Q8,55 TFSI,2021,SUV,3.0L Turbo V6,335,8-Speed Automatic,AWD,Gasoline,Germany
+Audi,SQ5,Prestige,2020,SUV,3.0L Turbo V6,349,8-Speed Automatic,AWD,Gasoline,Germany
+Audi,A4,2.0T Quattro,2015,Sedan,2.0L Turbo I4,220,8-Speed Automatic,AWD,Gasoline,Germany
+Volkswagen,Arteon,R-Line,2021,Sedan,2.0L Turbo I4,268,8-Speed Automatic,AWD,Gasoline,Germany
+Volkswagen,Golf GTI,Autobahn,2022,Hatchback,2.0L Turbo I4,241,6-Speed Manual,FWD,Gasoline,Germany
+Volkswagen,Golf R,Base,2023,Hatchback,2.0L Turbo I4,315,7-Speed DCT,AWD,Gasoline,Germany
+Volkswagen,Jetta,GLI,2021,Sedan,2.0L Turbo I4,228,6-Speed Manual,FWD,Gasoline,Germany
+Volkswagen,Passat,R-Line,2018,Sedan,2.0L Turbo I4,174,6-Speed Automatic,FWD,Gasoline,Germany
+Volkswagen,Touareg,V8 TDI,2010,SUV,4.2L Turbo V8,335,8-Speed Automatic,AWD,Diesel,Germany
+Volkswagen,Phaeton,W12,2004,Sedan,6.0L W12,414,5-Speed Automatic,AWD,Gasoline,Germany
+Volkswagen,Scirocco,R,2015,Hatchback,2.0L Turbo I4,276,6-Speed DCT,FWD,Gasoline,Germany
+Volkswagen,ID.4,Pro X,2022,SUV,Single Electric Motor,201,1-Speed Automatic,RWD,Electric,Germany
+BMW,M3,Competition,2021,Sedan,3.0L Twin-Turbo I6,503,8-Speed Automatic,RWD,Gasoline,Germany
+BMW,M5,CS,2022,Sedan,4.4L Twin-Turbo V8,627,8-Speed Automatic,AWD,Gasoline,Germany
+BMW,M2,CS,2020,Coupe,3.0L Twin-Turbo I6,444,6-Speed Manual,RWD,Gasoline,Germany
+BMW,M4,C SL,2023,Coupe,3.0L Twin-Turbo I6,543,8-Speed Automatic,RWD,Gasoline,Germany
+BMW,M8,Competition Gran Coupe,2022,Sedan,4.4L Twin-Turbo V8,617,8-Speed Automatic,AWD,Gasoline,Germany
+BMW,330i,M Sport,2020,Sedan,2.0L Turbo I4,255,8-Speed Automatic,RWD,Gasoline,Germany
+BMW,i8,Base,2015,Coupe,1.5L Turbo I3 Hybrid,357,6-Speed Automatic,AWD,Hybrid,Germany
+BMW,i4,M50,2022,Sedan,Dual Electric Motors,536,1-Speed Automatic,AWD,Electric,Germany
+BMW,Z4,M40i,2020,Convertible,3.0L Turbo I6,382,8-Speed Automatic,RWD,Gasoline,Germany
+BMW,X5 M,Competition,2021,SUV,4.4L Twin-Turbo V8,617,8-Speed Automatic,AWD,Gasoline,Germany
+BMW,1 Series M Coupe,Base,2011,Coupe,3.0L Twin-Turbo I6,335,6-Speed Manual,RWD,Gasoline,Germany
+Mercedes-Benz,AMG GT,R,2018,Coupe,4.0L Twin-Turbo V8,577,7-Speed DCT,RWD,Gasoline,Germany
+Mercedes-Benz,C 63 AMG,S Coupe,2019,Coupe,4.0L Twin-Turbo V8,503,9-Speed Automatic,RWD,Gasoline,Germany
+Mercedes-Benz,E 63 AMG,S Wagon,2021,Wagon,4.0L Twin-Turbo V8,603,9-Speed Automatic,AWD,Gasoline,Germany
+Mercedes-Benz,SLS AMG,Black Series,2014,Coupe,6.2L V8,622,7-Speed DCT,RWD,Gasoline,Germany
+Mercedes-Benz,G 63 AMG,Base,2021,SUV,4.0L Twin-Turbo V8,577,9-Speed Automatic,AWD,Gasoline,Germany
+Mercedes-Benz,S 63 AMG,Sedan,2018,Sedan,4.0L Twin-Turbo V8,603,9-Speed Automatic,AWD,Gasoline,Germany
+Mercedes-Benz,EQS,580 4MATIC,2022,Sedan,Dual Electric Motors,516,1-Speed Automatic,AWD,Electric,Germany
+Mercedes-Benz,SL 65 AMG,Black Series,2009,Coupe,6.0L Twin-Turbo V12,661,5-Speed Automatic,RWD,Gasoline,Germany
+Mercedes-Benz,A 45 AMG,S 4MATIC+,2020,Hatchback,2.0L Turbo I4,416,8-Speed DCT,AWD,Gasoline,Germany
+Porsche,911,GT3 RS,2023,Coupe,4.0L Flat-6,518,7-Speed PDK,RWD,Gasoline,Germany
+Porsche,911,Turbo S,2021,Coupe,3.7L Twin-Turbo Flat-6,640,8-Speed PDK,AWD,Gasoline,Germany
+Porsche,911,GT2 RS,2018,Coupe,3.8L Twin-Turbo Flat-6,700,7-Speed PDK,RWD,Gasoline,Germany
+Porsche,Taycan,Turbo S,2021,Sedan,Dual Electric Motors,750,2-Speed Automatic,AWD,Electric,Germany
+Porsche,Cayman,GT4 RS,2022,Coupe,4.0L Flat-6,493,7-Speed PDK,RWD,Gasoline,Germany
+Porsche,Panamera,Turbo S E-Hybrid,2021,Sedan,4.0L Twin-Turbo V8 Hybrid,690,8-Speed PDK,AWD,Hybrid,Germany
+Porsche,Carrera GT,Base,2005,Supercar,5.7L V10,603,6-Speed Manual,RWD,Gasoline,Germany
+Porsche,918 Spyder,Weissach Package,2015,Supercar,4.6L V8 Hybrid,887,7-Speed PDK,AWD,Hybrid,Germany
+Porsche,Macan,GTS,2022,SUV,2.9L Twin-Turbo V6,434,7-Speed PDK,AWD,Gasoline,Germany
+Ferrari,458,Italia,2011,Coupe,4.5L V8,562,7-Speed DCT,RWD,Gasoline,Italy
+Ferrari,488,Pista,2019,Coupe,3.9L Twin-Turbo V8,710,7-Speed DCT,RWD,Gasoline,Italy
+Ferrari,F8,Tributo,2020,Coupe,3.9L Twin-Turbo V8,710,7-Speed DCT,RWD,Gasoline,Italy
+Ferrari,SF90,Stradale,2021,Coupe,4.0L Twin-Turbo V8 Hybrid,986,8-Speed DCT,AWD,Hybrid,Italy
+Ferrari,LaFerrari,Base,2014,Hypercar,6.3L V12 Hybrid,950,7-Speed DCT,RWD,Hybrid,Italy
+Ferrari,812,Superfast,2018,Coupe,6.5L V12,789,7-Speed DCT,RWD,Gasoline,Italy
+Ferrari,Roma,Base,2021,Coupe,3.9L Twin-Turbo V8,612,8-Speed DCT,RWD,Gasoline,Italy
+Ferrari,Enzo,Base,2003,Hypercar,6.0L V12,651,6-Speed Automated Manual,RWD,Gasoline,Italy
+Ferrari,296,GTB,2022,Coupe,2.9L Turbo V6 Hybrid,819,8-Speed DCT,RWD,Hybrid,Italy
+Lamborghini,Gallardo,LP560-4,2009,Coupe,5.2L V10,552,6-Speed Automated Manual,AWD,Gasoline,Italy
+Lamborghini,Huracan,Performante,2018,Coupe,5.2L V10,631,7-Speed DCT,AWD,Gasoline,Italy
+Lamborghini,Huracan,STO,2021,Coupe,5.2L V10,631,7-Speed DCT,RWD,Gasoline,Italy
+Lamborghini,Aventador,SVJ,2019,Coupe,6.5L V12,759,7-Speed Automated Manual,AWD,Gasoline,Italy
+Lamborghini,Urus,Performante,2023,SUV,4.0L Twin-Turbo V8,657,8-Speed Automatic,AWD,Gasoline,Italy
+Lamborghini,Murcielago,LP670-4 SV,2010,Coupe,6.5L V12,661,6-Speed Manual / E-Gear,AWD,Gasoline,Italy
+Lamborghini,Revuelto,Base,2024,Supercar,6.5L V12 Hybrid,1001,8-Speed DCT,AWD,Hybrid,Italy
+Ford,Mustang,Shelby GT500,2020,Coupe,5.2L Supercharged V8,760,7-Speed DCT,RWD,Gasoline,USA
+Ford,Mustang,GT,2018,Coupe,5.0L V8,460,6-Speed Manual,RWD,Gasoline,USA
+Ford,GT,Base,2005,Supercar,5.4L Supercharged V8,550,6-Speed Manual,RWD,Gasoline,USA
+Ford,GT,Carbon Series,2019,Supercar,3.5L Twin-Turbo V6,647,7-Speed DCT,RWD,Gasoline,USA
+Ford,F-150,Raptor R,2023,Pickup,5.2L Supercharged V8,700,10-Speed Automatic,4WD,Gasoline,USA
+Ford,F-150 Lightning,Platinum,2022,Pickup,Dual Electric Motors,580,1-Speed Automatic,AWD,Electric,USA
+Ford,Focus,RS,2017,Hatchback,2.3L Turbo I4,350,6-Speed Manual,AWD,Gasoline,USA
+Ford,Fiesta,ST,2016,Hatchback,1.6L Turbo I4,197,6-Speed Manual,FWD,Gasoline,USA
+Chevrolet,Corvette,Z06,2023,Coupe,5.5L Flat-Plane V8,670,8-Speed DCT,RWD,Gasoline,USA
+Chevrolet,Corvette,ZR1,2019,Coupe,6.2L Supercharged V8,755,7-Speed Manual,RWD,Gasoline,USA
+Chevrolet,Corvette,Stingray C8,2020,Coupe,6.2L V8,495,8-Speed DCT,RWD,Gasoline,USA
+Chevrolet,Camaro,ZL1 1LE,2018,Coupe,6.2L Supercharged V8,650,6-Speed Manual,RWD,Gasoline,USA
+Chevrolet,SS,Base,2015,Sedan,6.2L V8,415,6-Speed Manual,RWD,Gasoline,USA
+Dodge,Challenger,SRT Demon,2018,Coupe,6.2L Supercharged V8,840,8-Speed Automatic,RWD,Gasoline,USA
+Dodge,Challenger,SRT Hellcat Redeye,2021,Coupe,6.2L Supercharged V8,797,8-Speed Automatic,RWD,Gasoline,USA
+Dodge,Charger,SRT Hellcat Widebody,2020,Sedan,6.2L Supercharged V8,707,8-Speed Automatic,RWD,Gasoline,USA
+Dodge,Viper,ACR,2016,Coupe,8.4L V10,645,6-Speed Manual,RWD,Gasoline,USA
+Tesla,Model S,Plaid,2021,Sedan,Tri Electric Motors,1020,1-Speed Automatic,AWD,Electric,USA
+Tesla,Model 3,Performance,2020,Sedan,Dual Electric Motors,450,1-Speed Automatic,AWD,Electric,USA
+Tesla,Model X,Plaid,2022,SUV,Tri Electric Motors,1020,1-Speed Automatic,AWD,Electric,USA
+Tesla,Model Y,Long Range,2021,SUV,Dual Electric Motors,384,1-Speed Automatic,AWD,Electric,USA
+Tesla,Roadster,Base,2008,Convertible,Single Electric Motor,248,1-Speed Automatic,RWD,Electric,USA
+Toyota,GR Supra,3.0 Premium,2021,Coupe,3.0L Turbo I6,382,8-Speed Automatic,RWD,Gasoline,Japan
+Toyota,GR Yaris,RZ,2021,Hatchback,1.6L Turbo I3,268,6-Speed Manual,AWD,Gasoline,Japan
+Toyota,GR86,Premium,2022,Coupe,2.4L Flat-4,228,6-Speed Manual,RWD,Gasoline,Japan
+Toyota,LFA,Nürburgring Package,2012,Supercar,4.8L V10,562,6-Speed Automated Manual,RWD,Gasoline,Japan
+Toyota,Land Cruiser,Heritage Edition,2020,SUV,5.7L V8,381,8-Speed Automatic,4WD,Gasoline,Japan
+Toyota,Camry,TRD,2020,Sedan,3.5L V6,301,8-Speed Automatic,FWD,Gasoline,Japan
+Nissan,GT-R,Nismo,2020,Coupe,3.8L Twin-Turbo V6,600,6-Speed DCT,AWD,Gasoline,Japan
+Nissan,GT-R,Premium,2009,Coupe,3.8L Twin-Turbo V6,480,6-Speed DCT,AWD,Gasoline,Japan
+Nissan,370Z,Nismo,2015,Coupe,3.7L V6,350,6-Speed Manual,RWD,Gasoline,Japan
+Nissan,Z,Performance,2023,Coupe,3.0L Twin-Turbo V6,400,6-Speed Manual,RWD,Gasoline,Japan
+Nissan,350Z,Track,2003,Coupe,3.5L V6,287,6-Speed Manual,RWD,Gasoline,Japan
+Honda,Civic Type R,FL5,2023,Hatchback,2.0L Turbo I4,315,6-Speed Manual,FWD,Gasoline,Japan
+Honda,Civic Type R,FK8,2018,Hatchback,2.0L Turbo I4,306,6-Speed Manual,FWD,Gasoline,Japan
+Honda,S2000,CR,2008,Convertible,2.2L I4,237,6-Speed Manual,RWD,Gasoline,Japan
+Acura,NSX,Type S,2022,Supercar,3.5L Twin-Turbo V6 Hybrid,600,9-Speed DCT,AWD,Hybrid,Japan
+Acura,Integra,Type S,2024,Sedan,2.0L Turbo I4,320,6-Speed Manual,FWD,Gasoline,Japan
+Subaru,WRX STI,S209,2019,Sedan,2.5L Turbo Flat-4,341,6-Speed Manual,AWD,Gasoline,Japan
+Subaru,WRX STI,Base,2004,Sedan,2.5L Turbo Flat-4,300,6-Speed Manual,AWD,Gasoline,Japan
+Subaru,BRZ,TS,2020,Coupe,2.0L Flat-4,205,6-Speed Manual,RWD,Gasoline,Japan
+Mazda,RX-8,R3,2009,Coupe,1.3L Rotary,232,6-Speed Manual,RWD,Gasoline,Japan
+Mazda,MX-5 Miata,Club,2019,Convertible,2.0L I4,181,6-Speed Manual,RWD,Gasoline,Japan
+McLaren,720S,Performance,2018,Coupe,4.0L Twin-Turbo V8,710,7-Speed DCT,RWD,Gasoline,UK
+McLaren,765LT,Base,2021,Coupe,4.0L Twin-Turbo V8,755,7-Speed DCT,RWD,Gasoline,UK
+McLaren,P1,Base,2014,Hypercar,3.8L Twin-Turbo V8 Hybrid,903,7-Speed DCT,RWD,Hybrid,UK
+McLaren,Senna,Base,2019,Hypercar,4.0L Twin-Turbo V8,789,7-Speed DCT,RWD,Gasoline,UK
+McLaren,F1,LM (Re-issue era/cont),2000,Hypercar,6.1L V12,668,6-Speed Manual,RWD,Gasoline,UK
+McLaren,Artura,Base,2022,Coupe,3.0L Twin-Turbo V6 Hybrid,671,8-Speed DCT,RWD,Hybrid,UK
+Aston Martin,DBS Superleggera,Base,2019,Coupe,5.2L Twin-Turbo V12,715,8-Speed Automatic,RWD,Gasoline,UK
+Aston Martin,Vantage,F1 Edition,2021,Coupe,4.0L Twin-Turbo V8,528,8-Speed Automatic,RWD,Gasoline,UK
+Aston Martin,DB11,V12,2017,Coupe,5.2L Twin-Turbo V12,600,8-Speed Automatic,RWD,Gasoline,UK
+Aston Martin,Valkyrie,Base,2022,Hypercar,6.5L V12 Hybrid,1160,7-Speed Automated Manual,RWD,Hybrid,UK
+Alfa Romeo,Giulia,Quadrifoglio,2017,Sedan,2.9L Twin-Turbo V6,505,8-Speed Automatic,RWD,Gasoline,Italy
+Alfa Romeo,4C,Launch Edition,2015,Coupe,1.75L Turbo I4,237,6-Speed DCT,RWD,Gasoline,Italy
+Alfa Romeo,8C Competizione,Base,2008,Coupe,4.7L V8,444,6-Speed Automated Manual,RWD,Gasoline,Italy
+Bugatti,Veyron,16.4 Super Sport,2010,Hypercar,8.0L Quad-Turbo W16,1183,7-Speed DCT,AWD,Gasoline,France
+Bugatti,Chiron,Super Sport 300+,2020,Hypercar,8.0L Quad-Turbo W16,1578,7-Speed DCT,AWD,Gasoline,France
+Koenigsegg,Agera,RS,2015,Hypercar,5.0L Twin-Turbo V8,1160,7-Speed DCT,RWD,Gasoline,Sweden
+Koenigsegg,Jesko,Attack,2022,Hypercar,5.0L Twin-Turbo V8,1600,9-Speed LST,RWD,Gasoline,Sweden
+Koenigsegg,CCX,Base,2006,Hypercar,4.7L Twin-Supercharged V8,806,6-Speed Manual,RWD,Gasoline,Sweden

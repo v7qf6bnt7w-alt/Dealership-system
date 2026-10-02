@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+
+{% block title %}{% if action == 'new' %}New vehicle{% else %}Edit vehicle{% endif %} | AutoMax{% endblock %}
+
+{% block content %}
+  <section class="admin-shell">
+    <div class="container admin-layout narrow-layout">
+      <aside class="admin-sidebar">
+        <h3>Administration</h3>
+        <nav>
+          <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('admin_vehicles') }}" class="active">Vehicles</a>
+          <a href="{{ url_for('admin_requests') }}">Requests</a>
+          <a href="{{ url_for('admin_logout') }}">Logout</a>
+        </nav>
+      </aside>
+
+      <div class="admin-main">
+        <div class="page-header">
+          <h1>{% if action == 'new' %}Create new vehicle{% else %}Edit vehicle{% endif %}</h1>
+        </div>
+
+        <div class="panel form-panel">
+          <form method="post" enctype="multipart/form-data">
+            <div class="form-row">
+              <div class="field">
+                <label for="brand">Brand</label>
+                <input type="text" id="brand" name="brand" list="brandSuggestions" value="{{ vehicle.brand if vehicle else '' }}" autocomplete="off" required />
+                <datalist id="brandSuggestions"></datalist>
+                <button type="button" class="catalog-add" data-catalog-type="brand" hidden>Add new brand</button>
+              </div>
+
+              <div class="field">
+                <label for="model">Model</label>
+                <input type="text" id="model" name="model" list="modelSuggestions" value="{{ vehicle.model if vehicle else '' }}" autocomplete="off" required />
+                <datalist id="modelSuggestions"></datalist>
+                <button type="button" class="catalog-add" data-catalog-type="model" hidden>Add new model</button>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="version">Version</label>
+                <input type="text" id="version" name="version" list="versionSuggestions" value="{{ vehicle.version if vehicle else '' }}" autocomplete="off" required />
+                <datalist id="versionSuggestions"></datalist>
+                <button type="button" class="catalog-add" data-catalog-type="version" hidden>Add new version</button>
+              </div>
+
+              <div class="field">
+                <label for="year">Year</label>
+                <input type="number" id="year" name="year" value="{{ vehicle.year if vehicle and vehicle.year is not none else '' }}" min="1886" max="2100" step="1" placeholder="e.g. 2022" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="mileage">Mileage (miles)</label>
+                <input type="number" id="mileage" name="mileage" value="{{ vehicle.mileage if vehicle and vehicle.mileage is not none else '' }}" min="0" step="1" placeholder="e.g. 24500" />
+              </div>
+
+              <div class="field">
+                <label for="name">Vehicle name</label>
+                <input type="text" id="name" name="name" value="{{ vehicle.name if vehicle else '' }}" placeholder="e.g. Toyota Corolla S" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="price">Price</label>
+                <input type="number" id="price" name="price" step="0.01" value="{{ vehicle.price if vehicle else '' }}" required />
+              </div>
+
+              <div class="field">
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" name="stock" value="{{ vehicle.stock if vehicle else 0 }}" min="0" required />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="description">Short description</label>
+              <textarea id="description" name="description" rows="3">{{ vehicle.description if vehicle else '' }}</textarea>
+            </div>
+
+            <div class="field">
+              <label for="details">Additional details</label>
+              <textarea id="details" name="details" rows="4" placeholder="Add features separated by commas">{{ vehicle.details if vehicle else '' }}</textarea>
+            </div>
+
+            <div class="field">
+              <label for="image_url">Image URL</label>
+              <input type="text" id="image_url" name="image_url" value="{{ vehicle.image_url if vehicle else '' }}" placeholder="https://... or leave blank" />
+            </div>
+
+            <div class="field">
+              <label for="media_files">Upload pictures and videos</label>
+              <input type="file" id="media_files" name="media_files" accept="image/*,video/mp4,video/webm,video/ogg,video/quicktime,video/x-m4v" multiple />
+              <small>Select multiple files at once. Supported: common image formats, MP4, WebM, OGG, MOV and M4V.</small>
+            </div>
+
+            {% if media %}
+              <div class="field">
+                <label>Current vehicle media</label>
+                <div class="admin-media-grid">
+                  {% for item in media %}
+                    <label class="admin-media-item">
+                      {% if item.kind == 'video' %}
+                        <video src="{{ item.url }}" controls preload="metadata"></video>
+                      {% else %}
+                        <img src="{{ item.url }}" alt="{{ vehicle.name }}" />
+                      {% endif %}
+                      <span><input type="checkbox" name="remove_media" value="{{ item.id }}" {% if not item.id %}disabled{% endif %} /> Remove</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+
+            <label class="checkbox-line">
+              <input type="checkbox" name="featured" {% if vehicle and vehicle.featured %}checked{% endif %} />
+              Mark as featured vehicle
+            </label>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">Save vehicle</button>
+              <a href="{{ url_for('admin_vehicles') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

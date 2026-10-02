@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}AutoMax | Home{% endblock %}
+
+{% block content %}
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-carousel">
+        {% for vehicle in featured %}
+          <article class="hero-slide {% if loop.first %}active{% endif %}">
+            <img src="{{ vehicle.image_url if vehicle.image_url and vehicle.image_url.startswith('http') else url_for('uploaded_file', filename=vehicle.image_url) if vehicle.image_url else 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80' }}" alt="{{ vehicle.name }}" />
+            <div class="hero-content">
+              <span>Featured vehicle</span>
+              <h1>{{ vehicle.name }}</h1>
+              <p>{{ vehicle.description or 'Premium quality and performance.' }}</p>
+              <div class="hero-actions">
+                <a href="{{ url_for('vehicle_detail', vehicle_id=vehicle.id) }}" class="btn btn-primary">View details</a>
+              </div>
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="filters-section">
+    <div class="container">
+      <form class="search-form" method="get" action="{{ url_for('index') }}">
+        <div class="search-group">
+          <label for="search">Search</label>
+          <input type="text" id="search" name="search" value="{{ filters.search }}" placeholder="Type model, brand, or keyword" />
+        </div>
+
+        <div class="search-group">
+          <label for="brand">Brand</label>
+          <select id="brand" name="brand">
+            <option value="">All brands</option>
+            {% for brand in brand_options %}
+              <option value="{{ brand }}" {% if filters.brand == brand %}selected{% endif %}>{{ brand }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="search-group">
+          <label for="model">Model</label>
+          <select id="model" name="model" data-models='{{ model_options | tojson | safe }}'>
+            <option value="">All models</option>
+            {% for model_name in model_options.get(filters.brand, []) %}
+              <option value="{{ model_name }}" {% if filters.model == model_name %}selected{% endif %}>{{ model_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="search-group">
+          <label for="version">Version</label>
+          <select id="version" name="version">
+            <option value="">All versions</option>
+            {% for version in version_options %}
+              <option value="{{ version }}" {% if filters.version == version %}selected{% endif %}>{{ version }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="search-group small">
+          <label for="min_price">Min price</label>
+          <input type="number" id="min_price" name="min_price" value="{{ filters.min_price }}" min="0" />
+        </div>
+
+        <div class="search-group small">
+          <label for="max_price">Max price</label>
+          <input type="number" id="max_price" name="max_price" value="{{ filters.max_price }}" min="0" />
+        </div>
+
+        <div class="search-group small">
+          <label for="sort">Sort by</label>
+          <select id="sort" name="sort">
+            <option value="newest" {% if filters.sort == 'newest' %}selected{% endif %}>Newest</option>
+            <option value="price_asc" {% if filters.sort == 'price_asc' %}selected{% endif %}>Lowest price</option>
+            <option value="price_desc" {% if filters.sort == 'price_desc' %}selected{% endif %}>Highest price</option>
+            <option value="brand" {% if filters.sort == 'brand' %}selected{% endif %}>Brand</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary search-button" type="submit">Apply filters</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="brands-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Our brands</h2>
+      </div>
+      <div class="brands-grid">
+        {% for brand in brands %}
+          <a href="{{ url_for('index', brand=brand) }}" class="brand-card">
+            <span>{{ brand }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section id="catalog" class="catalog-section">
+    <div class="container">
+      <div class="section-header catalog-header">
+        <h2>Vehicle catalog</h2>
+      </div>
+
+      <div class="vehicle-grid">
+        {% for vehicle in vehicles %}
+          <article class="vehicle-card {% if vehicle.stock <= 0 %}unavailable{% endif %}">
+            <div class="vehicle-image-wrap">
+              <img src="{{ vehicle.image_url if vehicle.image_url and vehicle.image_url.startswith('http') else url_for('uploaded_file', filename=vehicle.image_url) if vehicle.image_url else 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80' }}" alt="{{ vehicle.name }}" />
+              {% if vehicle.stock <= 0 %}
+                <span class="stock-banner">UNAVAILABLE</span>
+              {% endif %}
+            </div>
+            <div class="vehicle-body">
+              <div class="vehicle-topline">
+                <span class="badge">{{ vehicle.brand }}</span>
+                <span class="badge muted">{{ vehicle.version }}</span>
+              </div>
+              <h3>{{ vehicle.name }}</h3>
+              <p>{{ vehicle.description or 'Luxury performance and comfort.' }}</p>
+              <div class="vehicle-meta">
+                <span>{{ vehicle.model }}</span>
+                <span>Stock: {{ vehicle.stock }}</span>
+              </div>
+              <div class="vehicle-footer">
+                <strong>${{ '{:,.2f}'.format(vehicle.price) }}</strong>
+                <a href="{{ url_for('vehicle_detail', vehicle_id=vehicle.id) }}" class="btn btn-secondary">See details</a>
+              </div>
+            </div>
+          </article>
+        {% else %}
+          <div class="empty-state">
+            <h3>No vehicles match the current filters.</h3>
+            <p>Try another brand, model, or keyword.</p>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

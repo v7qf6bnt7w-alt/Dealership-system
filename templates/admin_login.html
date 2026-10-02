@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Login | AutoMax{% endblock %}
+
+{% block content %}
+  <section class="auth-section">
+    <div class="container auth-box">
+      <h1>Admin access</h1>
+      <form method="post" class="auth-form">
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn btn-primary full-width">Login</button>
+      </form>
+    </div>
+  </section>
+{% endblock %}

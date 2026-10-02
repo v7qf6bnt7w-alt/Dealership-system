@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ vehicle.name }} | AutoMax{% endblock %}
+
+{% block content %}
+  <section class="detail-section">
+    <div class="container detail-layout">
+      <div class="detail-image-panel">
+        {% if media %}
+          <div class="detail-gallery" data-detail-gallery>
+            <div class="detail-gallery-stage">
+              {% if media|length > 1 %}
+                <button type="button" class="gallery-arrow gallery-previous" data-gallery-previous aria-label="Previous picture">&#10094;</button>
+              {% endif %}
+            {% for item in media %}
+                <div class="detail-gallery-slide{% if loop.first %} active{% endif %}" data-gallery-slide="{{ loop.index0 }}" {% if not loop.first %}hidden{% endif %}>
+                  {% if item.kind == 'video' %}
+                    <video src="{{ item.url }}" controls preload="metadata" aria-label="{{ vehicle.name }} video {{ loop.index }}"></video>
+                  {% else %}
+                    <button type="button" class="gallery-zoom-trigger" data-gallery-zoom aria-label="Zoom {{ vehicle.name }} picture {{ loop.index }}">
+                      <img src="{{ item.url }}" alt="{{ vehicle.name }} picture {{ loop.index }}" />
+                    </button>
+                  {% endif %}
+                </div>
+            {% endfor %}
+              {% if media|length > 1 %}
+                <button type="button" class="gallery-arrow gallery-next" data-gallery-next aria-label="Next picture">&#10095;</button>
+              {% endif %}
+              <span class="gallery-counter" data-gallery-counter>1 / {{ media|length }}</span>
+            </div>
+            {% if media|length > 1 %}
+              <div class="detail-gallery-thumbnails" aria-label="Choose a picture or video">
+                {% for item in media %}
+                  <button type="button" class="gallery-thumbnail{% if loop.first %} active{% endif %}" data-gallery-thumbnail="{{ loop.index0 }}" aria-label="Show {{ 'video' if item.kind == 'video' else 'picture' }} {{ loop.index }}" aria-pressed="{{ 'true' if loop.first else 'false' }}">
+                    {% if item.kind == 'video' %}
+                      <video src="{{ item.url }}#t=0.1" muted preload="metadata" aria-hidden="true"></video>
+                      <span class="thumbnail-video-icon" aria-hidden="true">▶</span>
+                    {% else %}
+                      <img src="{{ item.url }}" alt="" />
+                    {% endif %}
+                  </button>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% else %}
+          <button type="button" class="gallery-zoom-trigger detail-image-fallback" data-gallery-zoom aria-label="Zoom {{ vehicle.name }} picture">
+            <img src="{{ image_url }}" alt="{{ vehicle.name }}" />
+          </button>
+        {% endif %}
+        {% if vehicle.stock <= 0 %}
+          <span class="stock-banner large">UNAVAILABLE</span>
+        {% endif %}
+      </div>
+
+      <div class="detail-info">
+        <span class="badge">{{ vehicle.brand }}</span>
+        <h1>{{ vehicle.name }}</h1>
+        <p class="detail-subtitle">{{ vehicle.model }} · {{ vehicle.version }}</p>
+        {% if vehicle.year or vehicle.mileage is not none %}
+          <p class="detail-vehicle-meta">
+            {% if vehicle.year %}<span>{{ vehicle.year }}</span>{% endif %}
+            {% if vehicle.mileage is not none %}<span>{{ '{:,}'.format(vehicle.mileage) }} mi</span>{% endif %}
+          </p>
+        {% endif %}
+        <p class="detail-price">${{ '{:,.2f}'.format(vehicle.price) }}</p>
+        <p>{{ vehicle.description or 'High-performance and comfortable vehicle ready for your next journey.' }}</p>
+
+        <div class="detail-specs">
+          <div>
+            <span>Availability</span>
+            <strong>{% if vehicle.stock > 0 %}Available{% else %}Unavailable{% endif %}</strong>
+          </div>
+          <div>
+            <span>Stock</span>
+            <strong>{{ vehicle.stock }}</strong>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <button class="btn btn-primary request-trigger" data-request-type="information" data-vehicle-id="{{ vehicle.id }}">Request Information</button>
+          <button class="btn btn-secondary request-trigger" data-request-type="visit" data-vehicle-id="{{ vehicle.id }}">Request Visit</button>
+        </div>
+
+        {% if vehicle.details %}
+          <div class="detail-details">
+            <h3>Additional details</h3>
+            <ul>
+              {% for item in vehicle.details.split(',') %}
+                {% if item.strip() %}
+                  <li>{{ item.strip() }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <div class="image-lightbox" data-image-lightbox aria-hidden="true" role="dialog" aria-modal="true" aria-label="Zoomed vehicle picture">
+    <button type="button" class="lightbox-close" data-lightbox-close aria-label="Close zoomed picture">&times;</button>
+    <button type="button" class="gallery-arrow lightbox-previous" data-lightbox-previous aria-label="Previous picture">&#10094;</button>
+    <img src="" alt="" data-lightbox-image />
+    <button type="button" class="gallery-arrow lightbox-next" data-lightbox-next aria-label="Next picture">&#10095;</button>
+  </div>
+
+  <div id="requestModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content">
+      <button type="button" class="modal-close" aria-label="Close modal">&times;</button>
+      <h3 id="modalTitle">Request Information</h3>
+      <form id="requestForm" data-vehicle-id="{{ vehicle.id }}">
+        <input type="hidden" name="request_type" id="requestTypeInput" value="information" />
+        <div class="form-row">
+          <div class="field">
+            <label for="first_name">First name</label>
+            <input type="text" id="first_name" name="first_name" required />
+          </div>
+          <div class="field">
+            <label for="last_name">Last name</label>
+            <input type="text" id="last_name" name="last_name" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us more about your interest..."></textarea>
+        </div>
+
+        <div id="testDriveField" class="field hidden">
+          <label>Would you like to be included in a test drive session?</label>
+          <div class="inline-options">
+            <label><input type="radio" name="wants_test_drive" value="yes" /> Yes</label>
+            <label><input type="radio" name="wants_test_drive" value="no" checked /> No</label>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <p id="requestFormMessage" class="form-message"></p>
+      </form>
+    </div>
+  </div>
+{% endblock %}

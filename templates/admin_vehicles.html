@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}Vehicle Inventory | AutoMax{% endblock %}
+
+{% block content %}
+  <section class="admin-shell">
+    <div class="container admin-layout">
+      <aside class="admin-sidebar">
+        <h3>Administration</h3>
+        <nav>
+          <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('admin_vehicles') }}" class="active">Vehicles</a>
+          <a href="{{ url_for('admin_requests') }}">Requests</a>
+          <a href="{{ url_for('admin_logout') }}">Logout</a>
+        </nav>
+      </aside>
+
+      <div class="admin-main">
+        <div class="page-header">
+          <h1>Vehicle inventory</h1>
+          <a href="{{ url_for('admin_new_vehicle') }}" class="btn btn-primary">New vehicle</a>
+        </div>
+
+        <div class="panel">
+          <table class="data-table wide-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Version</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for vehicle in vehicles %}
+                <tr class="{% if vehicle.stock <= 0 %}row-unavailable{% endif %}">
+                  <td>{{ vehicle.id }}</td>
+                  <td>
+                    <img class="admin-thumb" src="{{ vehicle.image_url if vehicle.image_url and vehicle.image_url.startswith('http') else url_for('uploaded_file', filename=vehicle.image_url) if vehicle.image_url else 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80' }}" alt="{{ vehicle.name }}" />
+                  </td>
+                  <td>{{ vehicle.name }}</td>
+                  <td>{{ vehicle.brand }}</td>
+                  <td>{{ vehicle.model }}</td>
+                  <td>{{ vehicle.version }}</td>
+                  <td>${{ '{:,.2f}'.format(vehicle.price) }}</td>
+                  <td>{{ vehicle.stock }}</td>
+                  <td>{% if vehicle.stock <= 0 %}<span class="status-pill danger">UNAVAILABLE</span>{% else %}<span class="status-pill ok">Available</span>{% endif %}</td>
+                  <td>
+                    <div class="action-stack">
+                      <a href="{{ url_for('admin_edit_vehicle', vehicle_id=vehicle.id) }}" class="mini-btn">Edit</a>
+                      <form method="post" action="{{ url_for('admin_update_stock', vehicle_id=vehicle.id) }}" class="inline-form">
+                        <input type="hidden" name="delta" value="1" />
+                        <button type="submit" class="mini-btn positive">+1</button>
+                      </form>
+                      <form method="post" action="{{ url_for('admin_update_stock', vehicle_id=vehicle.id) }}" class="inline-form">
+                        <input type="hidden" name="delta" value="-1" />
+                        <button type="submit" class="mini-btn negative">-1</button>
+                      </form>
+                      <form method="post" action="{{ url_for('admin_delete_vehicle', vehicle_id=vehicle.id) }}" class="inline-form" onsubmit="return confirm('Delete this vehicle?');">
+                        <button type="submit" class="mini-btn danger">Delete</button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

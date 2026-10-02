@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}AutoMax Dealership{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <a href="{{ url_for('index') }}" class="logo">AutoMax</a>
+        <nav>
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('index') }}#catalog">Inventory</a>
+          <a href="#contact">Contact</a>
+          <a href="{{ url_for('admin_login') }}">Admin</a>
+        </nav>
+      </div>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-container container">
+          {% for category, message in messages %}
+            <div class="flash flash-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer id="contact" class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>AutoMax</h3>
+          <p>Premium automotive sales and service in the city.</p>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>Phone: +1 (555) 212-8844</p>
+          <p>Email: info@automaxdealership.com</p>
+          <p>Address: 1280 Grand Avenue, Austin, TX</p>
+        </div>
+        <div>
+          <h4>Social</h4>
+          <ul class="social-links">
+            <li>Instagram: @automaxcars</li>
+            <li>Facebook: AutoMax Motors</li>
+            <li>LinkedIn: AutoMax Group</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Payments</h4>
+          <div class="payment-badges">
+            <span>Visa</span>
+            <span>MasterCard</span>
+            <span>Mercado Pago</span>
+            <span>PayPal</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

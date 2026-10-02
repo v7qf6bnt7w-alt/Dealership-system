@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}Requests | AutoMax{% endblock %}
+
+{% block content %}
+  <section class="admin-shell">
+    <div class="container admin-layout">
+      <aside class="admin-sidebar">
+        <h3>Administration</h3>
+        <nav>
+          <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+          <a href="{{ url_for('admin_vehicles') }}">Vehicles</a>
+          <a href="{{ url_for('admin_requests') }}" class="active">Requests</a>
+          <a href="{{ url_for('admin_logout') }}">Logout</a>
+        </nav>
+      </aside>
+
+      <div class="admin-main">
+        <div class="page-header">
+          <h1>Customer requests</h1>
+        </div>
+
+        <div class="panel">
+          <table class="data-table wide-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Client</th>
+                <th>Type</th>
+                <th>Contact</th>
+                <th>Status</th>
+                <th>Test drive</th>
+                <th>Notes</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for req in requests %}
+                <tr>
+                  <td>#{{ req.id }}</td>
+                  <td>{{ req.first_name }} {{ req.last_name }}</td>
+                  <td>{{ req.request_type }}</td>
+                  <td>{{ req.email }}<br>{{ req.phone }}</td>
+                  <td>{{ req.status }}</td>
+                  <td>{% if req.wants_test_drive %}Yes{% else %}No{% endif %}</td>
+                  <td>{{ req.notes or req.message or 'No notes yet' }}</td>
+                  <td>
+                    <form method="post" action="{{ url_for('admin_update_request', request_id=req.id) }}" class="request-inline-form">
+                      <select name="status">
+                        <option value="New" {% if req.status == 'New' %}selected{% endif %}>New</option>
+                        <option value="Reviewed" {% if req.status == 'Reviewed' %}selected{% endif %}>Reviewed</option>
+                        <option value="Contacted" {% if req.status == 'Contacted' %}selected{% endif %}>Contacted</option>
+                        <option value="Visit scheduled" {% if req.status == 'Visit scheduled' %}selected{% endif %}>Visit scheduled</option>
+                        <option value="Closed" {% if req.status == 'Closed' %}selected{% endif %}>Closed</option>
+                      </select>
+                      <textarea name="notes" rows="2" placeholder="Notes...">{{ req.notes or '' }}</textarea>
+                      <button type="submit" class="mini-btn positive">Save</button>
+                    </form>
+                    <form method="post" action="{{ url_for('admin_delete_request', request_id=req.id) }}" onsubmit="return confirm('Delete this request?');">
+                      <button type="submit" class="mini-btn danger">Delete</button>
+                    </form>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
