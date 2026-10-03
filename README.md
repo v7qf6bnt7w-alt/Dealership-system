@@ -21,8 +21,8 @@ This project is a Python web application for a vehicle dealership with two profi
 
 ## Default admin credentials
 
-- Username: admin
-- Password: admin123
+- Username: xxxxx
+- Password: xxxxxxxx
 
 ## Run the app locally
 
