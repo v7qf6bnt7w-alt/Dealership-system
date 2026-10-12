@@ -33,7 +33,13 @@ This project is a Python web application for a vehicle dealership with two profi
    pip install -r requirements.txt
    ```
 
-3. Start the app:
+3. Start the app with Gunicorn's development reloader:
+
+   ```bash
+   gunicorn --reload --bind 127.0.0.1:5000 app:app
+   ```
+
+   Alternatively, use Flask's built-in development server:
 
    ```bash
    python app.py
